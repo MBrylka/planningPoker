@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Planning poker</title>
+</head>
+<body>
+    <header>
+        <p>Planning Poker</p>
+    </header>
+    <section>
+        <div id="app" >
+            <div id="fibbo">
+                <div v-for="fib in fibbo" v-on:click="clickFibbo(fib)">
+                    {{fib}}
+                </div>
+            </div>
+            <div class="content">
+
+                <div class="card">
+                    <p>{{ currentUser.user.name }}</p>
+                    <p v-if="currentUser.user.visible">{{ currentUser.user.value }}</p>
+                    <p v-else>---</p>
+                    <div class="buttons">
+                        <div class="button user" v-on:click="clickOK()">ok</div>
+                        <div class="buttonClicked user">res</div>
+                    </div>
+                </div>
+
+                <div class="card" v-for="card in cards">
+                    <p>{{ card.user.name }}</p>
+                    <p v-if="card.user.visible">{{ card.user.value }}</p>
+                    <p v-else>---</p>
+                    <div class="buttons">
+                        <div class="button others">ok</div>
+                        <div class="buttonClicked others">res</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="app.js"></script>
+</html>

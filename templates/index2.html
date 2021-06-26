@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" >
     <title>Planning poker</title>
 </head>
 <body>
@@ -14,14 +14,14 @@
         <div id="app" >
             <div id="fibbo">
                 <div v-for="fib in fibbo" v-on:click="clickFibbo(fib)">
-                    {{fib}}
+                    [[fib]]
                 </div>
             </div>
             <div class="content">
 
-                <div class="card">
-                    <p>{{ currentUser.user.name }}</p>
-                    <p v-if="currentUser.user.visible">{{ currentUser.user.value }}</p>
+                <div class="user card">
+                    <p>[[currentUser.user.name]]</p>
+                    <p v-if="currentUser.user.visible">[[currentUser.user.value]]</p>
                     <p v-else>---</p>
                     <div class="buttons">
                         <div class="button" v-on:click="clickOK()" v-bind:class="{ 'buttonClicked': currentUser.user.ready == true }">ok</div>
@@ -29,9 +29,9 @@
                     </div>
                 </div>
 
-                <div class="card" v-for="card in cards">
-                    <p>{{ card.user.name }}</p>
-                    <p v-if="card.user.visible">{{ card.user.value }}</p>
+                <div class="otherUser card" v-for="card in cards">
+                    <p>[[card.user.name]]</p>
+                    <p v-if="card.user.visible">[[card.user.value]]</p>
                     <p v-else>---</p>
                     <div class="buttons">
                         <div class="button" v-bind:class="{ 'buttonClicked': card.user.ready == true }">ok</div>
@@ -44,5 +44,5 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-<script src="js/app.js"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </html>

@@ -16,6 +16,7 @@ header {
 }
 #fibbo div {
     text-align: center;
+    padding: 5px;
     min-width: 20px;
     height: 20px;
     margin: 5px;
@@ -45,6 +46,14 @@ header {
     flex-direction: column;
 }
 
+.user {
+    border: 2px solid goldenrod;
+}
+
+.otherUser {
+    border: 2px solid red;
+}
+
 .buttons {
     display: flex;
     justify-content: center;
@@ -53,6 +62,10 @@ header {
 }
 
 .button {
+    border:white 2px solid;
+    background-color: darkslategray;
+    color: white;
+
     text-align: center;
     width: 24px;
     height: 24px;
@@ -62,20 +75,13 @@ header {
 }
 
 .buttonClicked {
+    border:white 2px solid;
+    background-color: white;
+    color: darkslategray;
     text-align: center;
     width: 24px;
     height: 24px;
     margin:0 5px;
 
     border-radius: 5px;
-}
-
-.others {
-    background-color: darkslategray;
-    color: white;
-}
-
-.user {
-    background-color: white;
-    color: darkslategray;
 }
